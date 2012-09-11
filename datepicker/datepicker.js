@@ -6,6 +6,15 @@
  * Dual licensed under the MIT and GPL licenses
  * 
  */
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  Modified by David Votrubec @ ST-Software
+// - Prevention of NaN NaN NaN NaN NaN NaN NaN NaN  bug
+// - See https://trello.com/card/calendar-bug-nan-nan-nan-nan-lol/502278d694d541087515cb68/169
+//
+/////////////////////////////////////////////////////////////////////////////
 (function ($) {
 
     var cache = {};
@@ -185,13 +194,25 @@
 			        weekMin: 'wk'
 			    }
 			},
+
+            isValidDate = function (d) {
+                if (Object.prototype.toString.call(d) !== "[object Date]")
+                    return false;
+                var isValid = !isNaN(d.getTime());
+                return isValid;
+            },
+
 			fill = function (el) {
 			    var options = $(el).data('datepicker');
 			    var cal = $(el);
 			    var currentCal = Math.floor(options.calendars / 2), date, data, dow, month, cnt = 0, week, days, indic, indic2, html, tblCal;
 			    cal.find('td>table tbody').remove();
 			    for (var i = 0; i < options.calendars; i++) {
-			        date = new Date(options.current);
+
+                    // Modification by St-Software to prevent NaN NaN NaN bug when encountered Invalid Date
+			        var currentDate = isValidDate(options.current) ? options.current : new Date();
+
+			        date = new Date(currentDate);
 			        date.addMonths(-currentCal + i);
 			        tblCal = cal.find('table').eq(i + 1);
 			        switch (tblCal[0].className) {
@@ -505,7 +526,11 @@
 			        var parentEl = el.parent();
 			        var tblEl = parentEl.parent().parent().parent();
 			        var tblIndex = $('table', this).index(tblEl.get(0)) - 1;
-			        var tmp = new Date(options.current);
+
+			        // Modification by St-Software to prevent NaN NaN NaN bug when encountered Invalid Date
+			        var currentDate = isValidDate(options.current) ? options.current : new Date();
+
+			        var tmp = new Date(currentDate);
 			        var changed = false;
 			        var fillIt = false;
 			        if (parentEl.is('th')) {
