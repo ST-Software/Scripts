@@ -74,6 +74,3 @@ class OnchangeListener
 
 	destroy : () ->
 		@_unsubscribe()
-
-namespace 'stso', ( exports, window ) ->
-	exports.OnchangeListener = OnchangeListener
