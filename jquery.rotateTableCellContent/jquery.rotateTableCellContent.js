@@ -20,7 +20,7 @@
 			var cell = $(this)
 		  , newText = cell.html()
 		  , height = cell.height()
-		  , width = cell.width()
+		  , width = cell.text().length * parseInt(cell.css('font-size')) * 0.75
 		  , newDiv = $('<div>', { height: width, width: height })
 		  , newInnerDiv = $('<div>', { html: newText, 'class': 'rotated' });
 
