@@ -1,0 +1,3 @@
+Very simple number field plugin for jQuery. 
+All it does is that it prevents user from typing non-numeric values into field.
+Allowed keys are: "0-9 + - , ."
