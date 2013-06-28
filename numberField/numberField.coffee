@@ -6,8 +6,8 @@ do ($ = jQuery) ->
 			# prevent user from typing anything non-numeric
 			field = $ this
 			field.keydown (event) ->
-				# Allow: backspace 46, delete 8, tab 9, escape 27, enter 13, plus 107, minus 109, dot 110, decimal dot 118
-				if ( event.keyCode in [46, 8, 9, 27, 13, 107, 109, 110, 118] ||
+				# Allow: backspace 46, delete 8, tab 9, escape 27, enter 13, plus 107, minus 109, dot 110, decimal dot 118, 188
+				if ( event.keyCode in [46, 8, 9, 27, 13, 107, 109, 110, 118, 188] ||
 					# Allow: Ctrl+A
 					(event.keyCode is 65 && event.ctrlKey is true) || 
 					# Allow: home, end, left, right
