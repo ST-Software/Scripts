@@ -18,7 +18,7 @@
         field.keydown(function(event) {
           var _ref;
 
-          if (((_ref = event.keyCode) === 16 || _ref === 46 || _ref === 8 || _ref === 9 || _ref === 27 || _ref === 13 || _ref === 107 || _ref === 109 || _ref === 110 || _ref === 118) || (event.keyCode === 65 && event.ctrlKey === true) || ((event.keyCode >= 35 && event.keyCode <= 39) || (event.keyCode >= 48 && event.keyCode <= 57))) {
+          if (((_ref = event.keyCode) === 16 || _ref === 46 || _ref === 8 || _ref === 9 || _ref === 27 || _ref === 13 || _ref === 107 || _ref === 109 || _ref === 110 || _ref === 118 || _ref === 188) || (event.keyCode === 65 && event.ctrlKey === true) || ((event.keyCode >= 35 && event.keyCode <= 39) || (event.keyCode >= 48 && event.keyCode <= 57))) {
 
           } else {
             if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
