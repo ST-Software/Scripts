@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>		
+		<script type="text/javascript" src="../src/stringFormatterModule.js"></script>
+	</head>
+	
+	<body ng-app="myApp">
+	
+		<div ng-controller="SampleCtrl">
+			<h1>This text is example of string.format</h1>
+			Original template string is: <b>{{template}}</b>
+			<br>
+			<br>
+			This is the result after formatting: 
+			<h4>{{template | stringFormat:[competition.name, competition.place, competition.from, competition.to] }}</h4>    
+			
+			<br/>
+			<br/>
+			
+			<span>Try to change the values</span>
+			<br/>
+			
+			<input ng-model="competition.name"/>
+			<input ng-model="competition.from"/>
+			<input ng-model="competition.to"/>
+			<input ng-model="competition.place"/>
+		</div>	
+	</body>
+	
+	<script type="text/javascript" defer="defer">
+			var myApp = angular.module('myApp', ['stringFormatterModule']); 
+
+			myApp.controller('SampleCtrl', ['$scope', function($scope) {    
+				$scope.template = "Competition {0} takes place in {1} from {2} to {3}.";
+				$scope.competition = {
+					name : 'Formule F1 Race',
+					from : '31/05/2013',
+					to : '01/06/2013',
+					place : 'Brno',
+					organizer : {
+						name : 'David Votrubec',
+						address : 'hospoda Vokno'
+					}
+				};
+			}]);
+	</script>
+</html>
